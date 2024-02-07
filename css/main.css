@@ -1,0 +1,107 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+h1 {
+    color: #333;
+}
+
+.board {
+    border-style: double;
+    border: 25px;
+    width: 500px;
+    height: 500px;
+    margin-top: 20px;
+    color: purple;
+    background-color: gray;
+}
+
+.board-row {
+    height: 30px;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #0f0f0f;
+    border-radius: 4%;
+    cursor: pointer;
+    color: #0f0f0f;
+}
+
+.mine {
+    background-color: #c0392b;
+}
+
+.safe {
+    background-color: grey;
+}
+
+.touchingOne {
+    background-color: green;
+}
+
+.touchingTwo {
+    background-color: orange;
+}
+
+.touchingThree {
+    background-color: orangered;
+}
+
+.covered {
+    background-color: darkgray;
+}
+
+.counter {
+    background-color: darkgray;
+    width: 500px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    padding:  30px;
+}
+
+.restart {
+    margin: 20px;
+    margin-top: 0px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    padding: 20px;
+    cursor: pointer;
+    border: 3px;
+    border-style: double;
+    color: yellow;
+}
+
+.time {
+    background-color: black;
+    width: 210px;
+    height: 100px;
+    color: blue;
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+    border: 3px;
+    border-style: double;
+}
+
+.mines {
+    background-color: black;
+    width: 210px;
+    height: 100px;
+    color: #c0392b;
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+    border: 3px;
+    border-style: double;
+}
