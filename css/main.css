@@ -36,22 +36,44 @@ h1 {
 
 .mine {
     background-color: #c0392b;
+    text-align: center;
+    font-size: 22px;
 }
+.marked {
+    text-align: center;
+    font-size: 22px;
+}
+
 
 .safe {
     background-color: grey;
 }
 
 .touchingOne {
-    background-color: green;
+    
+    color: greenyellow;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .touchingTwo {
-    background-color: orange;
+    
+    color: blue;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .touchingThree {
-    background-color: orangered;
+    
+    color: blue;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .covered {

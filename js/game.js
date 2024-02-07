@@ -1,3 +1,6 @@
+const MARK = '☠️'
+const BOMB = '💣'
+
 var gBoard
 var gLevel = {
     SIZE: 4,
@@ -64,38 +67,61 @@ function renderBoard() {
         for (var j = 0; j < gBoard[0].length; j++) {
             const cell = gBoard[i][j]
 
-            // For a cell of type SEAT add seat class
             var className = ''
-            if (!cell.isMine && cell.isShown && cell.minesAroundCount === 0) {
+            if (cell.minesAroundCount === 0 && !cell.isMine && cell.isShown) {
                 className += 'safe'
             }
-            if (!cell.isMine && cell.isShown && cell.minesAroundCount === 1) {
-                className += 'touchingOne'
+            if (cell.minesAroundCount > 0 && !cell.isMine && cell.isShown) {
+                switch (cell.minesAroundCount) {
+                    case 1:
+                        className += 'touchingOne';
+                        break;
+                    case 2:
+                        className += 'touchingTwo';
+                        break;
+                    case 3:
+                        className += 'touchingThree';
+                        break;
+                    case 4:
+                        className += 'touchingFour';
+                        break;
+                    case 5:
+                        className += 'touchingFive';
+                        break;
+                    case 6:
+                        className += 'touchingSix';
+                        break;
+                    case 7:
+                        className += 'touchingSeven';
+                        break;
+                    case 8:
+                        className += 'touchingEight';
+                        break;
+                }
+
+            } else if (!cell.isShown) {
+                className += ' covered'
             }
-            if (!cell.isMine && cell.isShown && cell.minesAroundCount === 2) {
-                className += 'touchingTwo'
-            }
-            if (!cell.isMine && cell.isShown && cell.minesAroundCount === 3) {
-                className += 'touchingThree'
+            if (cell.isMarked && !cell.isShown) {
+                className += ' marked'
             }
             if (cell.isMine && cell.isShown) {
                 className += ' mine'
             }
-            if (!cell.isShown) {
-                className += ' covered'
-            }
-            // Add a seat title
             const title = `square: ${i}, ${j}`
 
             strHTML += `\t<td data-i="${i}" data-j="${j}" title="${title}" class="cell ${className}" 
-                            onclick="onCellClicked(this, ${i}, ${j})" >
-                         </td>\n`
+                                onclick="onCellClicked(this, ${i}, ${j})"
+                                oncontextmenu="onCellMarked(event, this, ${i}, ${j}); return false;">
+                                ${cell.isShown && !cell.isMine && cell.minesAroundCount > 0 ? cell.minesAroundCount : ''}
+                                ${cell.isShown && cell.isMine ? BOMB : ''}
+                                ${cell.isMarked && !cell.isShown ? MARK : ''}
+                            </td>\n`
         }
         strHTML += `</tr>\n`
     }
-
-    const elSeats = document.querySelector('.game')
-    elSeats.innerHTML = strHTML
+    const elGame = document.querySelector('.game')
+    elGame.innerHTML = strHTML
 }
 
 function setMinesNegsCount(board, rowIdx, colIdx) {
@@ -136,7 +162,7 @@ function showNegs(rowIdx, colIdx) {
             const neighborCell = gBoard[i][j];
             console.log(neighborCell);
 
-            if (!neighborCell.isMine && !neighborCell.isShown) {
+            if (!neighborCell.isMine && !neighborCell.isShown && !neighborCell.isMarked) {
                 neighborCell.isShown = true;
 
                 if (neighborCell.minesAroundCount > 0) {
@@ -148,4 +174,15 @@ function showNegs(rowIdx, colIdx) {
             }
         }
     }
+}
+
+function onCellMarked(event, elCell, i, j) {
+
+    const cell = gBoard[i][j]
+
+    cell.isMarked = !cell.isMarked;
+    elCell.classList.toggle('marked', cell.isMarked);
+    gGame.markedCount += cell.isMarked ? 1 : -1;
+    renderBoard()
+
 }
