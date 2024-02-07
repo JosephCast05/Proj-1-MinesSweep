@@ -9,11 +9,23 @@
 
 <body onload="onInitGame()">
   <h1>Don't Step On The Mines</h1>
+  <div class="WinModal">You Won!!😎🧡❤️<button class="startNew" onclick="onInitGame()">Restart</button></div>
+  <div class="LostModal">You Lost 😶‍🌫️!! <button class="restart" onclick="onInitGame()">Try Again😉</button></div>
+
+  <div class="Level"><button class="Easy" onclick="onInitGame('easy')">Easy</button>
+    <button class="Medium" onclick="onInitGame('medium')">Medium</button>
+    <button class="Hard" onclick="onInitGame('hard')">Hard</button>
+  </div>
   <table class="board">
     <div class="counter">
-<div class="mines">mines</div>
-<button class="restart" onclick="onInitGame()"></button>
-<div class="time">time</div>
+      <div class="mines">Mines:<span class="minesCount"></span></div>
+      <button class="reset" onclick="onInitGame()">😊</button>
+      <div class="time"><span class="timeCount">0</span>s</div>
+
+    </div>
+    <div class="LevelOne">
+      <div class="score">score:<span class="scoreCount">0</div>
+      <div class="flags">flags:<span class="flagsCount">0</span></div>
     </div>
     <tbody class="game"></tbody>
   </table>
