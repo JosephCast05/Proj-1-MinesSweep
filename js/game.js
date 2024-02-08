@@ -5,6 +5,7 @@ const MARK = '☠️'
 const BOMB = '💣'
 const elModalWin = document.querySelector('.WinModal')
 const elModalLost = document.querySelector('.LostModal')
+const elBtn = document.querySelector('.reset')
 
 var gBoard
 
@@ -17,12 +18,14 @@ var gGame = {
     isOn: false,
     shownCount: 0,
     markedCount: 0,
-    secsPassed: 0
+    secsPassed: 0,
+    lives: 3
 }
 
 function onInitGame(level) {
     elModalWin.style.display = 'none'
     elModalLost.style.display = 'none'
+    elBtn.innerText = '😊'
 
     switch (level) {
         case 'easy':
@@ -45,6 +48,7 @@ function onInitGame(level) {
 
     gBoard = createBoard()
     gGame.isOn = true
+    gGame.lives = 3
     gGame.shownCount = 0
     gGame.markedCount = 0
     gGame.secsPassed = 0
@@ -52,14 +56,31 @@ function onInitGame(level) {
     updateCounter('scoreCount', 0)
     updateCounter('flagsCount', 0)
     updateCounter('timeCount', 0)
+    updateCounter('livesCount', gGame.lives)
     clearInterval(gGame.timerInterval)
-    renderBoard();
+    renderBoard()
 }
 
 function updateCounter(className, value) {
     const elements = document.getElementsByClassName(className)
-    for (let i = 0; i < elements.length; i++) {
-        elements[i].innerText = value
+    if (className === 'livesCount') {
+        var hearts = ''
+
+        for (var i = 0; i < gGame.lives; i++) {
+            hearts += '❤️'
+        }
+
+        for (var i = gGame.lives; i < 3; i++) {
+            hearts += '💔'
+        }
+
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].innerHTML = hearts
+        }
+    } else {
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].innerText = value
+        }
     }
 }
 
@@ -78,25 +99,48 @@ function createBoard() {
             board[i][j] = cell
         }
     }
-    for (var i = 0; i < gLevel.MINES; i++) {
+    //BOMB CAN BE ALSO IN FIRST CLICKED CELL
+
+    /*for (var i = 0; i < gLevel.MINES; i++) {
         var randomRow = Math.floor(Math.random() * gLevel.SIZE)
         var randomCol = Math.floor(Math.random() * gLevel.SIZE)
-
+    
         while (board[randomRow][randomCol].isMine) {
             randomRow = Math.floor(Math.random() * gLevel.SIZE)
             randomCol = Math.floor(Math.random() * gLevel.SIZE)
         }
-
+    
         board[randomRow][randomCol].isMine = true
     }
-
+    
     for (var i = 0; i < gLevel.SIZE; i++) {
         for (var j = 0; j < gLevel.SIZE; j++) {
             board[i][j].minesAroundCount = setMinesNegsCount(board, i, j)
         }
     }
-
+    */
     return board
+}
+
+//A MINE CANNOT BE IN FIRST CLICKED CELL
+function placeMines(clickedRow, clickedCol) {
+
+    var minesPlaced = 0;
+    while (minesPlaced < gLevel.MINES) {
+        var randomRow = Math.floor(Math.random() * gLevel.SIZE)
+        var randomCol = Math.floor(Math.random() * gLevel.SIZE)
+
+        if (!gBoard[randomRow][randomCol].isMine && !(randomRow === clickedRow && randomCol === clickedCol)) {
+            gBoard[randomRow][randomCol].isMine = true
+            minesPlaced++
+        }
+    }
+
+    for (var i = 0; i < gLevel.SIZE; i++) {
+        for (var j = 0; j < gLevel.SIZE; j++) {
+            gBoard[i][j].minesAroundCount = setMinesNegsCount(gBoard, i, j);
+        }
+    }
 }
 
 function renderBoard() {
@@ -165,6 +209,7 @@ function renderBoard() {
     elGame.innerHTML = strHTML
 }
 
+//UPDATES NEIGHBOORS MINES COUNT
 function setMinesNegsCount(board, rowIdx, colIdx) {
     var count = 0
     for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
@@ -186,23 +231,42 @@ function onCellClicked(elCell, i, j) {
         return
     }
     if (gGame.shownCount === 0) {
+        placeMines(i, j)
         startTimer()
     }
-    cell.isShown = true
-    gGame.shownCount++
-
     if (cell.isMine) {
-        showAllCells()
-        elModalLost.style.display = 'block'
-        gGame.isOn = false
+        handleMineClick(elCell, i, j);
     } else {
+        cell.isShown = true;
+        gGame.shownCount++;
+
         if (cell.minesAroundCount === 0) {
-            showNegs(i, j)
+            showNegs(i, j);
         }
-        renderBoard()
+
+        renderBoard();
     }
-    updateCounter('scoreCount', gGame.shownCount)
-    checkGameOver()
+
+    updateCounter('scoreCount', gGame.shownCount);
+    checkGameOver();
+}
+
+function handleMineClick(elCell, i, j) {
+    gGame.lives--;
+    updateCounter('livesCount', gGame.lives);
+
+    if (gGame.lives > 0) {
+        elCell.innerText = `💣 is here! 💔\n ${gGame.lives} ❤️left `
+        setTimeout(() => {
+            elCell.innerText = originalContent
+            renderBoard()
+        }, 1000);
+    } else {
+        elBtn.innerText = '🤯';
+        showAllCells();
+        elModalLost.style.display = 'block';
+        gGame.isOn = false;
+    }
 }
 
 function startTimer() {
@@ -212,6 +276,7 @@ function startTimer() {
     }, 1000)
 }
 
+//OPENS NEIGHBOORS CELL WHICH ARE NOT MINES AND RECURSE UNTIL FINDS THE FIRST CELL WHICH TOUCH A MINE
 function showNegs(rowIdx, colIdx) {
     for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
         for (var j = colIdx - 1; j <= colIdx + 1; j++) {
@@ -235,6 +300,7 @@ function showNegs(rowIdx, colIdx) {
     }
 }
 
+//MARKS THE CELL WHICH THE USER BELIEVES IS HIDDEN THE MINE
 function onCellMarked(event, elCell, i, j) {
     const cell = gBoard[i][j]
 
@@ -246,6 +312,7 @@ function onCellMarked(event, elCell, i, j) {
     checkGameOver()
 }
 
+// ONLY FOR LOST GAMES WANTS TO SHOW THE USER THE SOLUTION
 function showAllCells() {
     for (var i = 0; i < gLevel.SIZE; i++) {
         for (var j = 0; j < gLevel.SIZE; j++) {
@@ -260,7 +327,10 @@ function checkGameOver() {
     const totalSafeCells = totalCells - gLevel.MINES
 
     if (gGame.shownCount === totalSafeCells && gGame.markedCount === gLevel.MINES) {
+        elBtn.innerText = '😎'
         elModalWin.style.display = 'block'
         gGame.isOn = false
     }
 }
+
+

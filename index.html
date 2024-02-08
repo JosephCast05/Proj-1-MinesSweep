@@ -8,7 +8,7 @@
 </head>
 
 <body onload="onInitGame()">
-  <h1>Don't Step On The Mines</h1>
+  <h1>💣💣Don't Step On The Mines💣💣</h1>
   <div class="WinModal">You Won!!😎🧡❤️<button class="startNew" onclick="onInitGame()">Restart</button></div>
   <div class="LostModal">You Lost 😶‍🌫️!! <button class="restart" onclick="onInitGame()">Try Again😉</button></div>
 
@@ -16,20 +16,22 @@
     <button class="Medium" onclick="onInitGame('medium')">Medium</button>
     <button class="Hard" onclick="onInitGame('hard')">Hard</button>
   </div>
+  <div class="lives-count">Lives:<span class="livesCount">3</span></div>
+
   <table class="board">
     <div class="counter">
       <div class="mines">Mines:<span class="minesCount"></span></div>
-      <button class="reset" onclick="onInitGame()">😊</button>
+      <button class="reset" onclick="onInitGame()"></button>
       <div class="time"><span class="timeCount">0</span>s</div>
 
     </div>
     <div class="LevelOne">
-      <div class="score">score:<span class="scoreCount">0</div>
-      <div class="flags">flags:<span class="flagsCount">0</span></div>
+      <div class="score">Score:<span class="scoreCount">0</div>
+      <div class="flags">Flags☠️:<span class="flagsCount">0</span></div>
     </div>
     <tbody class="game"></tbody>
   </table>
-  <div class="footer">Joseph Castelnuovo</div>
+  <div class="footer">Developed by Joseph Castelnuovo</div>
 
   <script src="js/game.js"></script>
 </body>
