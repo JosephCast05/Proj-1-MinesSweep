@@ -256,7 +256,7 @@ function handleMineClick(elCell, i, j) {
     updateCounter('livesCount', gGame.lives);
 
     if (gGame.lives > 0) {
-        elCell.innerText = `💣 is here! 💔\n ${gGame.lives} ❤️left `
+        elCell.innerText = `💣 here! 😤💔\n ${gGame.lives} ❤️left `
         setTimeout(() => {
             elCell.innerText = originalContent
             renderBoard()
