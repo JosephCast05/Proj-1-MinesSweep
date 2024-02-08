@@ -20,6 +20,106 @@ h1 {
 
 }
 
+.WinModal {
+    position: absolute;
+    background-color: #0f0f0f;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    width: 400px;
+    height: 250px;
+    color: orangered;
+    font-size: 50px;
+    border-style: double;
+    border-color: blue;
+    margin-top: 500px;
+
+
+
+}
+
+.startNew {
+    position: absolute;
+    right: 38%;
+    top: 55%;
+    width: 100px;
+    height: 70px;
+    background-color: transparent;
+    color: orangered;
+    border: 5px;
+    border-style: solid;
+    border-color: orangered;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.LostModal {
+    position: absolute;
+    background-color: #0f0f0f;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    width: 400px;
+    height: 250px;
+    color: yellowgreen;
+    font-size: 50px;
+    border-style: double;
+    border-color: yellowgreen;
+    margin-top: 500px;
+
+
+}
+
+.restart {
+    position: absolute;
+    right: 40%;
+    top: 50%;
+    width: 100px;
+    height: 70px;
+    background-color: transparent;
+    color: yellowgreen;
+    border: 5px;
+    border-style: solid;
+    border-color: yellowgreen;
+    cursor: pointer;
+}
+
+.Level {
+    background-color: darkgray;
+    width: 500px;
+    height: 10px;
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+}
+
+.Level button {
+
+    margin-left: 60px;
+    width: 90px;
+    height: 40px;
+    background-color: transparent;
+    color: teal;
+    font-size: 20px;
+    font-weight: 800;
+    font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
+}
+
+.lives-count {
+    font-size: 40px;
+    background-color: darkgray;
+    width: 500px;
+    height: 20px;
+    text-align: center;
+    padding: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    color: red;
+}
+
 .board {
     border-style: double;
     border: 25px;
@@ -46,129 +146,13 @@ h1 {
     font-weight: 400;
 }
 
-.mine {
-    background-color: #c0392b;
-    text-align: center;
-    font-size: 22px;
-}
-
-.marked {
-    text-align: center;
-    font-size: 22px;
-}
-
-
-.safe {
-    background-color: grey;
-}
-
-.touchingOne {
-
-    color: greenyellow;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 900;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.touchingTwo {
-
-    color: yellow;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 900;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.touchingThree {
-
-    color: rgb(240, 189, 95);
-    text-align: center;
-    font-size: 20px;
-    font-weight: 900;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.touchingFour {
-
-    color: orange;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 900;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.touchingFive {
-
-    color: darkorange;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 900;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.touchingSix {
-
-    color: tomato;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 900;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.touchingSeven {
-
-    color: goldenrod;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 900;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.touchingEight {
-
-    color: red;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 900;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.covered {
-    background-color: darkgray;
-}
-
-
-.Level {
-    background-color: darkgray;
-    width: 500px;
-    height: 10px;
-    display: flex;
-    flex-direction: row;
-    padding: 30px;
-}
-
-.LevelOne {
+.counter2 {
     background-color: darkgrey;
     width: 500px;
     height: 100px;
     display: flex;
     flex-direction: row;
     padding: 30px;
-}
-
-
-.Level button {
-
-    margin-left: 60px;
-    width: 90px;
-    height: 40px;
-    background-color: transparent;
-    color: teal;
-    font-size: 20px;
-    font-weight: 800;
-    font-family: 'Courier New', Courier, monospace;
-    cursor: pointer;
 }
 
 .counter {
@@ -248,84 +232,116 @@ h1 {
     border-style: double;
 }
 
-.LostModal {
-    position: absolute;
-    background-color: #0f0f0f;
+.mine {
+    background-color: #c0392b;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin-top: 100px;
-    width: 400px;
-    height: 250px;
-    color: yellowgreen;
-    font-size: 50px;
-    border-style: double;
-    border-color: yellowgreen;
-    margin-top: 500px;
-
-
+    font-size: 22px;
 }
 
-.restart {
-    position: absolute;
-    right: 40%;
-    top: 50%;
-    width: 100px;
-    height: 70px;
-    background-color: transparent;
-    color: yellowgreen;
-    border: 5px;
-    border-style: solid;
-    border-color: yellowgreen;
-    cursor: pointer;
-}
-
-.WinModal {
-    position: absolute;
-    background-color: #0f0f0f;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin-top: 100px;
-    width: 400px;
-    height: 250px;
-    color: blue;
-    font-size: 50px;
-    border-style: double;
-    border-color: blue;
-    margin-top: 500px;
-
-
-
-}
-
-.startNew {
-    position: absolute;
-    right: 40%;
-    top: 50%;
-    width: 100px;
-    height: 70px;
-    background-color: transparent;
-    color: blue;
-    border: 5px;
-    border-style: solid;
-    border-color: blue;
-    cursor: pointer;
-}
-
-.lives-count {
-    font-size: 40px;
+.covered {
     background-color: darkgray;
-    width: 500px;
-    height: 20px;
-    text-align: center;
-    padding: 30px;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 600;
-    color: red;
 }
+
+.marked {
+    text-align: center;
+    font-size: 22px;
+}
+
+.safe {
+    background-color: grey;
+}
+
+.touchingOne {
+
+    color: greenyellow;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.touchingTwo {
+
+    color: yellow;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.touchingThree {
+
+    color: rgb(240, 189, 95);
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.touchingFour {
+
+    color: orange;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.touchingFive {
+
+    color: darkorange;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.touchingSix {
+
+    color: tomato;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.touchingSeven {
+
+    color: goldenrod;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.touchingEight {
+
+    color: red;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.hint-container{
+    background-color: darkgray;
+    padding: 5px;
+    margin-top: 10px;
+    width: 190px;
+    height: 50px;
+}
+
+.hint-container button{
+background-color: transparent;
+border: none;
+width: 15px;
+height: 15px;
+margin-inline: 15px;
+font-size: 30px;
+}
+
 .footer{
-    margin-top: 60px;
+    margin-top: 30px;
     font-size: 30px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 800;

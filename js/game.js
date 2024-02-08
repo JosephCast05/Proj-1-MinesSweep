@@ -1,6 +1,5 @@
 'use strict'
 
-
 const MARK = '☠️'
 const BOMB = '💣'
 const elModalWin = document.querySelector('.WinModal')
@@ -256,7 +255,7 @@ function handleMineClick(elCell, i, j) {
     updateCounter('livesCount', gGame.lives);
 
     if (gGame.lives > 0) {
-        elCell.innerText = `💣 here! 😤💔\n ${gGame.lives} ❤️left `
+        elCell.innerText = `💣here\n${gGame.lives}❤️left `
         setTimeout(() => {
             elCell.innerText = originalContent
             renderBoard()
@@ -271,9 +270,14 @@ function handleMineClick(elCell, i, j) {
 
 function startTimer() {
     gGame.timerInterval = setInterval(function () {
-        gGame.secsPassed++
-        updateCounter('timeCount', gGame.secsPassed)
-    }, 1000)
+        if (gGame.isOn) {
+            gGame.secsPassed++
+            updateCounter('timeCount', gGame.secsPassed)
+        }else{
+            clearInterval(gGame.timerInterval)
+        }
+        }, 1000)
+
 }
 
 //OPENS NEIGHBOORS CELL WHICH ARE NOT MINES AND RECURSE UNTIL FINDS THE FIRST CELL WHICH TOUCH A MINE
@@ -332,5 +336,3 @@ function checkGameOver() {
         gGame.isOn = false
     }
 }
-
-
