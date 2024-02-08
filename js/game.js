@@ -252,7 +252,7 @@ function onCellClicked(elCell, i, j) {
 }
 
 function handleMineClick(elCell, i, j) {
-    gGame.lives--;
+    gGame.lives--
     updateCounter('livesCount', gGame.lives);
 
     if (gGame.lives > 0) {
@@ -260,12 +260,12 @@ function handleMineClick(elCell, i, j) {
         setTimeout(() => {
             elCell.innerText = originalContent
             renderBoard()
-        }, 1000);
+        }, 1000)
     } else {
-        elBtn.innerText = '🤯';
-        showAllCells();
-        elModalLost.style.display = 'block';
-        gGame.isOn = false;
+        elBtn.innerText = '🤯'
+        showAllCells()
+        elModalLost.style.display = 'block'
+        gGame.isOn = false
     }
 }
 
