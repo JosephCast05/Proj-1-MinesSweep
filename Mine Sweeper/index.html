@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Mines</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="onInitGame()">
+  <h1>💣💣Don't Step On The Mines💣💣</h1>
+
+  <div class="WinModal">You Won!!😎<br>🧡❤️<button class="startNew" onclick="onInitGame()">Restart</button></div>
+  <div class="LostModal">You Lost 😶‍🌫️!! <button class="restart" onclick="onInitGame()">Try Again😉</button></div>
+
+  <div class="Level"><button class="Easy" onclick="onInitGame('easy')">Easy</button>
+    <button class="Medium" onclick="onInitGame('medium')">Medium</button>
+    <button class="Hard" onclick="onInitGame('hard')">Hard</button>
+  </div>
+
+
+  <table class="board">
+
+    <div class="counter">
+      <div class="mines">Mines:<span class="minesCount"></span></div>
+      <button class="reset" onclick="onInitGame()"></button>
+      <div class="time"><span class="timeCount">0</span>s</div>
+    </div>
+
+    <div class="counter2">
+      <div class="score">Score:<span class="scoreCount">0</div>
+      <div class="flags">Flags☠️:<span class="flagsCount">0</span></div>
+    </div>
+    <div class="lives-count">Lives:<span class="livesCount">3</span></div>
+
+    <tbody class="game"></tbody>
+
+  </table>
+
+  <div class="hint-container">
+    <button class="hint" onclick="useHint()">🔎</button>
+    <button class="hint" onclick="useHint()">🔎</button>
+    <button class="hint" onclick="useHint()">🔎</button>
+  </div>
+
+  <div class="footer">Developed by Joseph Castelnuovo</div>
+
+  <script src="js/game.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,348 @@
+body {
+    display: flex;
+    align-items: center;
+    height: 150vh;
+    flex-direction: column;
+    background-image: url('../img/backto90.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    background-color: rgb(127, 255, 212,  0.9);
+
+}
+
+.WinModal {
+    position: absolute;
+    background-color: #0f0f0f;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    width: 400px;
+    height: 250px;
+    color: orangered;
+    font-size: 50px;
+    border-style: double;
+    border-color: blue;
+    margin-top: 500px;
+
+}
+
+.startNew {
+    position: absolute;
+    right: 38%;
+    top: 55%;
+    width: 100px;
+    height: 70px;
+    background-color: transparent;
+    color: orangered;
+    border: 5px;
+    border-style: solid;
+    border-color: orangered;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.LostModal {
+    position: absolute;
+    background-color: #0f0f0f;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    width: 400px;
+    height: 250px;
+    color: yellowgreen;
+    font-size: 50px;
+    border-style: double;
+    border-color: yellowgreen;
+    margin-top: 500px;
+
+
+}
+
+.restart {
+    position: absolute;
+    right: 40%;
+    top: 50%;
+    width: 100px;
+    height: 70px;
+    background-color: transparent;
+    color: yellowgreen;
+    border: 5px;
+    border-style: solid;
+    border-color: yellowgreen;
+    cursor: pointer;
+}
+
+.Level {
+    background-color: darkgray;
+    width: 460px;
+    height: 10px;
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+}
+
+.Level button {
+
+    margin-left: 60px;
+    width: 90px;
+    height: 40px;
+    background-color: transparent;
+    color: teal;
+    font-size: 20px;
+    font-weight: 800;
+    font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
+}
+
+.lives-count {
+    font-size: 20px;
+    background-color: darkgray;
+    width: 500px;
+    height: 20px;
+    text-align: center;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    color: red;
+}
+
+.board {
+    border-style: double;
+    border: 25px;
+    width: 600px;
+    height: 600px;
+    margin-top: 20px;
+    color: purple;
+    background-color: gray;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #0f0f0f;
+    border-radius: 4%;
+    cursor: pointer;
+    color: #0f0f0f;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    
+}
+
+.counter2 {
+    background-color: darkgrey;
+    width: 460px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+}
+
+.counter {
+    background-color: darkgray;
+    width: 460px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+}
+
+.reset {
+    margin: 20px;
+    margin-top: 30px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    padding: 2px;
+    cursor: pointer;
+    border: 3px;
+    border-style: double;
+    color: yellow;
+    font-size: 45px;
+}
+
+.time {
+    background-color: black;
+    width: 180px;
+    height: 50px;
+    color: orange;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+    border: 3px;
+    border-style: double;
+}
+
+.mines {
+    background-color: black;
+    width: 180px;
+    height: 50px;
+    color: #c0392b;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+    border: 3px;
+    border-style: double;
+}
+
+.score {
+    background-color: black;
+    width: 200px;
+    height: 50px;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+    border: 3px;
+    border-style: double;
+    margin-right: 70px;
+
+}
+
+.flags {
+    background-color: black;
+    width: 200px;
+    height: 50px;
+    color: yellowgreen;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+    border: 3px;
+    border-style: double;
+}
+
+.mine {
+    background-color: #c0392b;
+    text-align: center;
+    font-size: 22px;
+}
+
+.covered {
+    background-color: darkgray;
+    
+}
+
+.marked {
+    text-align: center;
+    font-size: 22px;
+}
+
+.safe {
+    background-color: grey;
+}
+
+.touchingOne {
+
+    color: greenyellow;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.touchingTwo {
+
+    color: yellow;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.touchingThree {
+
+    color: rgb(240, 189, 95);
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.touchingFour {
+
+    color: orange;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.touchingFive {
+
+    color: darkorange;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.touchingSix {
+
+    color: tomato;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.touchingSeven {
+
+    color: goldenrod;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.touchingEight {
+
+    color: red;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.hint-container{
+    background-color: darkgray;
+    padding: 5px;
+    margin-top: 10px;
+    width: 190px;
+    height: 50px;
+}
+
+.hint-container button{
+background-color: transparent;
+border: none;
+width: 15px;
+height: 15px;
+margin-inline: 15px;
+font-size: 30px;
+}
+
+.footer{
+    margin-top: 30px;
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+    background-color: darkgray;
+    border: 5px;
+    border-style: solid;
+    border-color: #0f0f0f;
+}
