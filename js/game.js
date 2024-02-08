@@ -38,7 +38,7 @@ function onInitGame(level) {
         case 'hard':
             gLevel.SIZE = 12
             gLevel.MINES = 32
-            break;
+            break
         default:
             gLevel.SIZE = 4
             gLevel.MINES = 2
@@ -121,8 +121,8 @@ function createBoard() {
     return board
 }
 
-//A MINE CANNOT BE IN FIRST CLICKED CELL
 function placeMines(clickedRow, clickedCol) {
+    //A MINE CANNOT BE IN FIRST CLICKED CELL
 
     var minesPlaced = 0;
     while (minesPlaced < gLevel.MINES) {
@@ -192,7 +192,7 @@ function renderBoard() {
             if (cell.isMine && cell.isShown) {
                 className += ' mine'
             }
-            const title = `square: ${i}, ${j}`
+            const title = `Cell: ${i + 1}, ${j + 1}`
 
             strHTML += `\t<td data-i="${i}" data-j="${j}" title="${title}" class="cell ${className}" 
                                 onclick="onCellClicked(this, ${i}, ${j})"
@@ -208,8 +208,9 @@ function renderBoard() {
     elGame.innerHTML = strHTML
 }
 
-//UPDATES NEIGHBOORS MINES COUNT
 function setMinesNegsCount(board, rowIdx, colIdx) {
+    //UPDATES NEIGHBOORS MINES COUNT
+
     var count = 0
     for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
         if (i < 0 || i >= board.length) continue
@@ -234,20 +235,20 @@ function onCellClicked(elCell, i, j) {
         startTimer()
     }
     if (cell.isMine) {
-        handleMineClick(elCell, i, j);
+        handleMineClick(elCell, i, j)
     } else {
-        cell.isShown = true;
-        gGame.shownCount++;
+        cell.isShown = true
+        gGame.shownCount++
 
         if (cell.minesAroundCount === 0) {
-            showNegs(i, j);
+            showNegs(i, j)
         }
 
-        renderBoard();
+        renderBoard()
     }
 
-    updateCounter('scoreCount', gGame.shownCount);
-    checkGameOver();
+    updateCounter('scoreCount', gGame.shownCount)
+    checkGameOver()
 }
 
 function handleMineClick(elCell, i, j) {
@@ -255,7 +256,7 @@ function handleMineClick(elCell, i, j) {
     updateCounter('livesCount', gGame.lives);
 
     if (gGame.lives > 0) {
-        elCell.innerText = `💣here\n${gGame.lives}❤️left `
+        elCell.innerText = `💣here\n-1❤️ `
         setTimeout(() => {
             elCell.innerText = originalContent
             renderBoard()
@@ -273,15 +274,16 @@ function startTimer() {
         if (gGame.isOn) {
             gGame.secsPassed++
             updateCounter('timeCount', gGame.secsPassed)
-        }else{
+        } else {
             clearInterval(gGame.timerInterval)
         }
-        }, 1000)
+    }, 1000)
 
 }
 
-//OPENS NEIGHBOORS CELL WHICH ARE NOT MINES AND RECURSE UNTIL FINDS THE FIRST CELL WHICH TOUCH A MINE
 function showNegs(rowIdx, colIdx) {
+    //OPENS NEIGHBOORS CELL WHICH ARE NOT MINES AND RECURSE UNTIL FINDS THE FIRST CELL WHICH TOUCH A MINE
+
     for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
         for (var j = colIdx - 1; j <= colIdx + 1; j++) {
             if (i < 0 || i >= gBoard.length || j < 0 || j >= gBoard[0].length) {
@@ -304,8 +306,9 @@ function showNegs(rowIdx, colIdx) {
     }
 }
 
-//MARKS THE CELL WHICH THE USER BELIEVES IS HIDDEN THE MINE
 function onCellMarked(event, elCell, i, j) {
+    //MARKS THE CELL WHICH THE USER BELIEVES IS HIDDEN THE MINE
+
     const cell = gBoard[i][j]
 
     cell.isMarked = !cell.isMarked
@@ -316,8 +319,9 @@ function onCellMarked(event, elCell, i, j) {
     checkGameOver()
 }
 
-// ONLY FOR LOST GAMES WANTS TO SHOW THE USER THE SOLUTION
 function showAllCells() {
+    // ONLY FOR LOST GAMES WANTS TO SHOW THE USER THE SOLUTION
+
     for (var i = 0; i < gLevel.SIZE; i++) {
         for (var j = 0; j < gLevel.SIZE; j++) {
             gBoard[i][j].isShown = true
@@ -336,3 +340,4 @@ function checkGameOver() {
         gGame.isOn = false
     }
 }
+
