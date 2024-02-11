@@ -7,7 +7,7 @@ const elModalLost = document.querySelector('.LostModal')
 const elBtn = document.querySelector('.reset')
 
 var gBoard
-
+var gHintUsed = false
 var gLevel = {
     SIZE: 4,
     MINES: 2
@@ -38,10 +38,6 @@ function onInitGame(level) {
         case 'hard':
             gLevel.SIZE = 12
             gLevel.MINES = 32
-            break
-        default:
-            gLevel.SIZE = 4
-            gLevel.MINES = 2
             break
     }
 
@@ -227,7 +223,7 @@ function setMinesNegsCount(board, rowIdx, colIdx) {
 function onCellClicked(elCell, i, j) {
     const cell = gBoard[i][j]
 
-    if (!gGame.isOn || cell.isShown || cell.isMarked) {
+    if (!gGame.isOn || cell.isMarked || cell.isShown || gHintUsed) {
         return
     }
     if (gGame.shownCount === 0) {
@@ -340,4 +336,3 @@ function checkGameOver() {
         gGame.isOn = false
     }
 }
-
